@@ -205,5 +205,6 @@ public class AddressBookOperations {
         String cityName = scan.next();
         List filterListByCity = contactList.stream().filter(contact -> contact.getCity().equalsIgnoreCase(cityName)).collect(Collectors.toList());
         System.out.println("Contact having " +cityName+ " name are:- \n" +filterListByCity);
+        System.out.println("Total contacts having this city are:- " +filterListByCity.size());
     }
 }
