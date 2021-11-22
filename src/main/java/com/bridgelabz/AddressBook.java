@@ -44,6 +44,8 @@ public class AddressBook {
                                 status = false;
                         }
                         System.out.println("Current list " + addressBook.contactList);
+                        System.out.println("After Sorting");
+                        System.out.println(addressBook.sortAlphabetically());
                     } while (status);
                     map.put(bookName, addressBook);
                     break;

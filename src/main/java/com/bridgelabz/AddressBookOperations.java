@@ -1,9 +1,6 @@
 package com.bridgelabz;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class AddressBookOperations {
@@ -206,5 +203,10 @@ public class AddressBookOperations {
         List filterListByCity = contactList.stream().filter(contact -> contact.getCity().equalsIgnoreCase(cityName)).collect(Collectors.toList());
         System.out.println("Contact having " +cityName+ " name are:- \n" +filterListByCity);
         System.out.println("Total contacts having this city are:- " +filterListByCity.size());
+    }
+
+    public List sortAlphabetically () {
+        List contactList2 = contactList.stream().sorted(Comparator.comparing(contact -> contact.getFirstName())).collect(Collectors.toList());
+        return contactList2;
     }
 }
