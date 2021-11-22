@@ -197,6 +197,9 @@ public class AddressBookOperations {
         }
     }
 
+    /*
+    Method to search contacts by city
+     */
     public void searchByCity() {
         System.out.println("Enter City");
         String cityName = scan.next();
