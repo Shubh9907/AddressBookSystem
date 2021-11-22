@@ -23,7 +23,7 @@ public class AddressBook {
                     boolean status = true;
                     do {
                         System.out.println("Choose Operation you want to do");
-                        System.out.println("1.Add a contact\t2.Edit contact\t3.Delete a contact\t4.Show a contact details\t5.Exit from current address book");
+                        System.out.println("1.Add a contact\t2.Edit contact\t3.Delete a contact\t4.Show a contact details\t5.Search by City\t6.Exit from current address book");
                         switch (scan.nextInt()) {
                             case 1:
                                 addressBook.add();
@@ -36,6 +36,9 @@ public class AddressBook {
                                 break;
                             case 4:
                                 addressBook.showContact();
+                                break;
+                            case 5:
+                                addressBook.searchByCity();
                                 break;
                             default:
                                 status = false;

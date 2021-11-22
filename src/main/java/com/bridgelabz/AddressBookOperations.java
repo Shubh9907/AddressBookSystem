@@ -2,7 +2,9 @@ package com.bridgelabz;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class AddressBookOperations {
     ArrayList<Contacts> contactList = new ArrayList<>();
@@ -195,9 +197,10 @@ public class AddressBookOperations {
         }
     }
 
-    public void searchByCity () {
-        System.out.println("Enter city name");
+    public void searchByCity() {
+        System.out.println("Enter City");
         String cityName = scan.next();
-
+        List filterListByCity = contactList.stream().filter(contact -> contact.getCity().equalsIgnoreCase(cityName)).collect(Collectors.toList());
+        System.out.println("Contact having " +cityName+ " name are:- \n" +filterListByCity);
     }
 }
