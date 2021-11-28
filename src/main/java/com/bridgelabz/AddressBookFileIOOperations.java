@@ -8,6 +8,10 @@ import java.nio.file.Paths;
 public class AddressBookFileIOOperations {
     public static String AddressBook_File_Name = "addressbook-file.txt";
 
+    /**
+     * Method to write data to a file
+     * @param contacts
+     */
     public void writeDate(Contacts contacts) {
         StringBuffer bookBuffer = new StringBuffer();
         String contact = contacts.toString().concat("\n");
@@ -20,6 +24,9 @@ public class AddressBookFileIOOperations {
         }
     }
 
+    /**
+     * Method to print the file data to console
+     */
     public void printData() {
         try {
             Files.lines(new File(AddressBook_File_Name).toPath()).forEach(System.out::println);
@@ -28,6 +35,10 @@ public class AddressBookFileIOOperations {
         }
     }
 
+    /**
+     * Method to count the entries in the file
+     * @return
+     */
     public long countEntries() {
         long entries = 0;
         try {
