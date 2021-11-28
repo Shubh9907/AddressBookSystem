@@ -19,36 +19,29 @@ public class AddressBookOperations {
 
 
         if (contactList.size() == 0) {
-            Contacts contacts = new Contacts();
-            contacts.setFirstName(firstName);
-            contacts.setLastName(lastName);
 
             System.out.println("Enter the address:");
             String address = scan.next();
-            contacts.setAddress(address);
 
             System.out.println("Enter the City:");
             String city = scan.next();
-            contacts.setCity(city);
 
             System.out.println("Enter the State:");
             String state = scan.next();
-            contacts.setState(state);
 
             System.out.println("Enter the Zip:");
             String zip = scan.next();
-            contacts.setZip(zip);
 
             System.out.println("Enter the Phone Number:");
             String phoneNumber = scan.next();
-            contacts.setPhoneNumber(phoneNumber);
 
             System.out.println("Enter the Email");
             String email = scan.next();
-            contacts.setEmail(email);
+
+            Contacts contacts = new Contacts(firstName,lastName,address,city,state,email,zip,phoneNumber);
+            writeContactDetails(contacts);
             this.contactList.add(contacts);
         } else {
-            Contacts contacts = new Contacts();
             int n = 1;
             int flag = 0;
             for (Contacts contact : contactList) {
@@ -62,34 +55,25 @@ public class AddressBookOperations {
             if (flag == 1) {
                 System.out.println("This name is already present in the address book");
             } else {
-                contacts.setFirstName(firstName);
-
-                contacts.setLastName(lastName);
-
                 System.out.println("Enter the address:");
                 String address = scan.next();
-                contacts.setAddress(address);
 
                 System.out.println("Enter the City:");
                 String city = scan.next();
-                contacts.setCity(city);
 
                 System.out.println("Enter the State:");
                 String state = scan.next();
-                contacts.setState(state);
 
                 System.out.println("Enter the Zip:");
                 String zip = scan.next();
-                contacts.setZip(zip);
 
                 System.out.println("Enter the Phone Number:");
                 String phoneNumber = scan.next();
-                contacts.setPhoneNumber(phoneNumber);
 
                 System.out.println("Enter the Email");
                 String email = scan.next();
-                contacts.setEmail(email);
 
+                Contacts contacts = new Contacts(firstName,lastName,address,city,state,email,zip,phoneNumber);
                 this.contactList.add(contacts);
             }
         }
@@ -208,5 +192,17 @@ public class AddressBookOperations {
     public List sortAlphabetically () {
         List contactList2 = contactList.stream().sorted(Comparator.comparing(contact -> contact.getFirstName())).collect(Collectors.toList());
         return contactList2;
+    }
+
+    public void writeContactDetails(Contacts contacts) {
+        new AddressBookFileIOOperations().writeDate(contacts);
+    }
+
+    public void printContactDetails() {
+        new AddressBookFileIOOperations().printData();
+    }
+
+    public long countEntries() {
+        return new AddressBookFileIOOperations().countEntries();
     }
 }
