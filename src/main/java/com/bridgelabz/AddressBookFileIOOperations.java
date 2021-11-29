@@ -1,12 +1,15 @@
 package com.bridgelabz;
 
-import java.io.File;
-import java.io.IOException;
+import org.junit.jupiter.params.shadow.com.univocity.parsers.csv.CsvWriter;
+
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class AddressBookFileIOOperations {
     public static String AddressBook_File_Name = "addressbook-file.txt";
+    public static String AddressBook_CSV_File_Name = "addressbook-CSV-file.csv";
 
     /**
      * Method to write data to a file
@@ -43,6 +46,30 @@ public class AddressBookFileIOOperations {
         long entries = 0;
         try {
             entries = Files.lines(new File(AddressBook_File_Name).toPath()).count();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return entries;
+    }
+
+    public void writeDataToCSV(ArrayList<Contacts> contacts) throws IOException {
+        FileWriter fw = new FileWriter(AddressBook_CSV_File_Name,true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        PrintWriter pw = new PrintWriter(bw);
+
+        for (Contacts contact : contacts) {
+            String newContact = contact.toString().concat("\n");
+            pw.print(contact+"\n");
+        }
+
+        pw.flush();
+        pw.close();
+    }
+
+    public long countEntriesInCSV() {
+        long entries = 0;
+        try {
+            entries = Files.lines(new File(AddressBook_CSV_File_Name).toPath()).count();
         } catch (IOException e) {
             e.printStackTrace();
         }

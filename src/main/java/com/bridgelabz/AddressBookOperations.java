@@ -1,5 +1,6 @@
 package com.bridgelabz;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -204,5 +205,13 @@ public class AddressBookOperations {
 
     public long countEntries() {
         return new AddressBookFileIOOperations().countEntries();
+    }
+
+    public void writeContactDetailsToSCV(ArrayList<Contacts> contacts) throws IOException {
+        new AddressBookFileIOOperations().writeDataToCSV(contacts);
+    }
+
+    public long countEntriesInSCV() {
+        return new AddressBookFileIOOperations().countEntriesInCSV();
     }
 }

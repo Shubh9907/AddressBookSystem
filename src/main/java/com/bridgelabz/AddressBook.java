@@ -1,5 +1,6 @@
 package com.bridgelabz;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -7,7 +8,7 @@ public class AddressBook {
     static HashMap<String, AddressBookOperations> map = new HashMap<>();
     static Scanner scan = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.println("Welcome to Address Book System");
         AddressBookOperations addressBook = new AddressBookOperations();
 
@@ -46,6 +47,7 @@ public class AddressBook {
                         System.out.println("Current list " + addressBook.contactList);
                         System.out.println("After Sorting");
                         System.out.println(addressBook.sortAlphabetically());
+                        addressBook.writeContactDetailsToSCV(addressBook.contactList);
                     } while (status);
                     map.put(bookName, addressBook);
                     break;
