@@ -214,4 +214,8 @@ public class AddressBookOperations {
     public long countEntriesInSCV() {
         return new AddressBookFileIOOperations().countEntriesInCSV();
     }
+
+    public void writeContactToJSon(ArrayList<Contacts> contacts) throws IOException {
+        new AddressBookFileIOOperations().writeToJSon(contacts);
+    }
 }

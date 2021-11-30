@@ -48,6 +48,7 @@ public class AddressBook {
                         System.out.println("After Sorting");
                         System.out.println(addressBook.sortAlphabetically());
                         addressBook.writeContactDetailsToSCV(addressBook.contactList);
+                        addressBook.writeContactToJSon(addressBook.contactList);
                     } while (status);
                     map.put(bookName, addressBook);
                     break;

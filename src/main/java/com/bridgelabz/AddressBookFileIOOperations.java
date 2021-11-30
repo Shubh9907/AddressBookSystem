@@ -1,15 +1,16 @@
 package com.bridgelabz;
 
-import org.junit.jupiter.params.shadow.com.univocity.parsers.csv.CsvWriter;
-
+import com.google.gson.Gson;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class AddressBookFileIOOperations {
+    AddressBookOperations operations = new AddressBookOperations();
     public static String AddressBook_File_Name = "addressbook-file.txt";
     public static String AddressBook_CSV_File_Name = "addressbook-CSV-file.csv";
+    public static String AddressBook_JSON_File_Name = "addressbook-JSON-file.json";
 
     /**
      * Method to write data to a file
@@ -74,5 +75,13 @@ public class AddressBookFileIOOperations {
             e.printStackTrace();
         }
         return entries;
+    }
+
+    public void writeToJSon(ArrayList<Contacts> contacts) throws IOException {
+        Gson gson = new Gson();
+        String json = gson.toJson(contacts);
+        FileWriter writer = new FileWriter(AddressBook_JSON_File_Name);
+        writer.write(json);
+        writer.close();
     }
 }
